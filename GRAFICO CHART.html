@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.min.js"
+      integrity="sha512-dnUg2JxjlVoXHVdSMWDYm2Y5xcIrJg1N+juOuRi0yLVkku/g26rwHwysJDAMwahaDfRpr1AxFz43ktuMPr/l1A=="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+
+  
+  <body>
+
+    <h1>Mortes por covid em cada estado </h1>  
+
+    <input id="inpum" type="text" placeholder="insira o numero de mortes">
+    <select name="" id="sele_um">
+        <option value="SP">SP</option>
+        <option value="RJ">RJ</option>
+        <option value="MG">MG</option>
+        <option value="ES">ES</option>
+    </select>
+
+    <br><br>
+        <input id="inpdois" type="text" placeholder="insira o numero de mortes">
+
+        <select name="" id="sele_dois">
+            <option value="SP">SP</option>
+            <option value="RJ">RJ</option>
+            <option value="MG">MG</option>
+            <option value="ES">ES</option>  
+             
+    </select>
+
+    <br> <br>
+    <input id="inptres" type="text" placeholder="insira o numero de mortes">
+        
+    <select name="" id="sele_tres">
+        <option value="SP">SP</option>
+        <option value="RJ">RJ</option>
+        <option value="MG">MG</option>
+        <option value="ES">ES</option> 
+</select>
+<br> <br>
+
+        <button onclick="but()">mostrar</button>
+ 
+    
+    
+
+
+
+
+
+    <div style="width: 50%; height: 100px">
+      <canvas id="chart"></canvas>
+    </div>
+
+   
+  </body>
+</html>
+<script>
+
+  
+    
+
+    function but(){
+    var morte = (inpum.value)
+    var morteum = (inpdois.value)
+    var mortedois=(inptres.value)
+
+
+    
+    
+  // Cria o contexto do CANVAS
+  var ctx = chart.getContext("2d");
+
+
+  // Configuracao do grafico
+  var config = {
+    type: "pie", // Aqui falo qual modelo de grafico vou querer
+    data: {
+      labels: [sele_um.value, sele_dois.value, sele_tres.value,], 
+      datasets: [
+        {
+          label: "# of Votes", // Titulo do grafico
+          data: [ morte,morteum,mortedois,], // Dados do grafico
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            
+          ],
+          borderColor: [
+            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(153, 102, 255, 1)",
+            "rgba(255, 159, 64, 1)",
+          ],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  };
+
+  new Chart(ctx, config);  }
+</script>
